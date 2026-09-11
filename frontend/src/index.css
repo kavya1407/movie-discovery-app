@@ -1,0 +1,401 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #111;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  padding: 40px 20px;
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+.header h1 {
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+.search-form {
+  display: flex;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 14px 16px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-form button {
+  padding: 14px 24px;
+  border: none;
+  background: #e50914;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #b20710;
+}
+
+.message {
+  text-align: center;
+  margin: 50px 20px;
+  font-size: 18px;
+}
+
+.error {
+  color: #d00000;
+}
+
+.movie-grid {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(180px, 1fr)
+  );
+  gap: 24px;
+}
+
+.movie-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.no-poster {
+  width: 100%;
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ddd;
+}
+
+.movie-info {
+  padding: 12px;
+}
+
+.movie-info h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.movie-info p {
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 25px;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-form input,
+  .search-form button {
+    width: 100%;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .movie-poster,
+  .no-poster {
+    height: 240px;
+  }
+}
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 20px;
+}
+
+.load-more-button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  background: #e50914;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.load-more-button:hover {
+  background: #b20710;
+}
+
+.load-more-button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+.wishlist-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #e50914;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.wishlist-button:hover {
+  background: #b20710;
+}
+
+.wishlist-button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.wishlist-message {
+  margin-top: 12px;
+  font-weight: bold;
+}
+.wishlist-home-link {
+  color: white;
+}
+
+.remove-wishlist-button {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-wishlist-button:hover {
+  background: #555;
+}
+.header-top {
+  max-width: 900px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-top h1 {
+  margin-bottom: 0;
+}
+
+.wishlist-link {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: white;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.wishlist-link:hover {
+  background: #e50914;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .header-top {
+    flex-direction: column;
+  }
+}
+.browse-section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto 20px;
+}
+
+.browse-section h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-button {
+  padding: 10px 18px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  color: #111;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.category-button:hover {
+  background: #eee;
+}
+
+.category-button.active {
+  background: #e50914;
+  color: white;
+  border-color: #e50914;
+}
+
+@media (max-width: 600px) {
+  .browse-section h2 {
+    font-size: 23px;
+  }
+
+  .category-buttons {
+    gap: 8px;
+  }
+
+  .category-button {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+.sort-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 25px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.sort-container label {
+  font-weight: bold;
+}
+
+.sort-container select {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .sort-container {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* =========================================
+   LOADING SKELETON
+========================================= */
+
+.skeleton-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skeleton-poster {
+  width: 100%;
+  height: 270px;
+  background: #ddd;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-info {
+  padding: 12px;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 18px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #ddd;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-year {
+  width: 40%;
+  height: 14px;
+  border-radius: 4px;
+  background: #ddd;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .skeleton-poster {
+    height: 240px;
+  }
+}
+/* =========================================
+   ERROR + RETRY
+========================================= */
+
+.error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.retry-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #e50914;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background: #b20710;
+}

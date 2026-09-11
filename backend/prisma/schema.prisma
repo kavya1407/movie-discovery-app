@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Wishlist {
+  id        Int      @id @default(autoincrement())
+  movieId   String   @unique
+  title     String
+  year      String?
+  posterUrl String?
+  createdAt DateTime @default(now())
+}
