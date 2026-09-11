@@ -159,19 +159,27 @@ router.get("/search", async (req, res) => {
       totalResults / 10
     );
 
+    // Remove incomplete movie objects
+    // before sending data to frontend
     const movies =
-      response.data.Search.map(
-        (movie) => ({
+      response.data.Search
+        .filter(
+          (movie) =>
+            movie &&
+            movie.imdbID &&
+            movie.Title
+        )
+        .map((movie) => ({
           id: movie.imdbID,
           title: movie.Title,
-          year: movie.Year,
-          type: movie.Type,
+          year: movie.Year || "N/A",
+          type: movie.Type || "movie",
           posterUrl:
+            movie.Poster &&
             movie.Poster !== "N/A"
               ? movie.Poster
               : null,
-        })
-      );
+        }));
 
     const result = {
       query,
@@ -294,19 +302,27 @@ router.get("/browse", async (req, res) => {
       totalResults / 10
     );
 
+    // Remove incomplete movie objects
+    // before sending data to frontend
     const movies =
-      response.data.Search.map(
-        (movie) => ({
+      response.data.Search
+        .filter(
+          (movie) =>
+            movie &&
+            movie.imdbID &&
+            movie.Title
+        )
+        .map((movie) => ({
           id: movie.imdbID,
           title: movie.Title,
-          year: movie.Year,
-          type: movie.Type,
+          year: movie.Year || "N/A",
+          type: movie.Type || "movie",
           posterUrl:
+            movie.Poster &&
             movie.Poster !== "N/A"
               ? movie.Poster
               : null,
-        })
-      );
+        }));
 
     const result = {
       category,
@@ -407,33 +423,53 @@ router.get("/:id", async (req, res) => {
 
     const movie = {
       id: response.data.imdbID,
-      title: response.data.Title,
-      year: response.data.Year,
-      rated: response.data.Rated,
+      title:
+        response.data.Title ||
+        "Unknown Title",
+      year:
+        response.data.Year ||
+        "N/A",
+      rated:
+        response.data.Rated ||
+        "N/A",
       released:
-        response.data.Released,
+        response.data.Released ||
+        "N/A",
       runtime:
-        response.data.Runtime,
-      genre: response.data.Genre,
+        response.data.Runtime ||
+        "N/A",
+      genre:
+        response.data.Genre ||
+        "N/A",
       director:
-        response.data.Director,
+        response.data.Director ||
+        "N/A",
       actors:
-        response.data.Actors,
-      plot: response.data.Plot,
+        response.data.Actors ||
+        "N/A",
+      plot:
+        response.data.Plot ||
+        "No plot information available.",
       language:
-        response.data.Language,
+        response.data.Language ||
+        "N/A",
       country:
-        response.data.Country,
+        response.data.Country ||
+        "N/A",
       awards:
-        response.data.Awards,
+        response.data.Awards ||
+        "N/A",
       posterUrl:
+        response.data.Poster &&
         response.data.Poster !== "N/A"
           ? response.data.Poster
           : null,
       rating:
-        response.data.imdbRating,
+        response.data.imdbRating ||
+        "N/A",
       votes:
-        response.data.imdbVotes,
+        response.data.imdbVotes ||
+        "N/A",
     };
 
     setCachedData(
