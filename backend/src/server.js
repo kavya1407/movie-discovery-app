@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.json({
     status: "OK",
-    message: "Movie Discovery API is healthy",
   });
 });
 
@@ -51,9 +50,7 @@ const PORT = process.env.PORT || 5000;
 
 console.log(
   "OMDb key loaded:",
-  process.env.OMDB_API_KEY
-    ? "YES"
-    : "NO"
+  process.env.OMDB_API_KEY ? "YES" : "NO"
 );
 
 app.listen(PORT, () => {
